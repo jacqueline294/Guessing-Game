@@ -1,57 +1,64 @@
 import java.util.InputMismatchException;
-import java. util.Scanner;
-import java. lang.Math;
+import java.util.Random;
+import java.util.Scanner;
 
-public class Guess{
+public class Guess {
+    private static final String Yes = null;
+
     public static void main(String[] args) {
-         
-        Scanner scanner= new Scanner(System.in);
-        
-        int number = (int) (Math.random() * 100) + 1;
-        System.out.println(number);
+        Scanner scanner = new Scanner(System.in);
+        String answer = "Yes";
 
-         System.out.println("Welcome guess a number between 1 and 100");
-        
+        while (answer.equals("Yes")) {
+            Random random = new Random();
+            int number = random.nextInt(100) + 1;
+            System.out.println(number);
+            System.out.println("Welcome! Guess a number between 1 and 100");
 
-            String answer;
-            int count=0;
-            boolean runGame= true;
+            try {
+                int guessedNumber = scanner.nextInt();
 
-            do  {
-                 try {
-                    
-                  
-                int guessedNumber= scanner.nextInt();
-
-                if(guessedNumber==number){
-                    System.out.println("Hurray you guessed the right number");
-                    System.out.println("Do you want o play again? Yes or No");
-                    answer = scanner.nextLine();
-                    
+                while (guessedNumber != number) {
+                    if (guessedNumber < 1 || guessedNumber > 100) {
+                        System.out.println("Your guess is out of the valid range (1-100). Try again.");
+                    } else if (guessedNumber < number) {
+                        System.out.println("Your guess is lower.");
+                    } else {
+                        System.out.println("Your guess is higher.");
+                    }
+                    guessedNumber = scanner.nextInt();
                 }
-                else if(guessedNumber<number){
-                    System.out.println("sorry  the number lower ");
-                    count--;
-                }
-                else if (guessedNumber>number){
-                    System.out.println("the number is higher ");
-                    count--;
-                }
+
+                System.out.println("Hurray, you guessed the right number!");
                 
-               
+            } catch (InputMismatchException e) {
+                System.out.println("You can only write numbers, not alphabets. Try again.");
+                scanner.next(); 
             }
-                catch (InputMismatchException e) {
-                   System.out.println("You can only write number not alphabets,Try again.");
-                   scanner.next();
+            System.out.println("Do you want to play again? Yes or No");
+                answer = scanner.next();
+                  if(answer== Yes){
+                    System.out.println("cool");
+                    
+                   }else{
+                    
+                    }
+        }
 
-                 }
-             
-                 
-            } while(runGame);
+    
+    }
+}
 
-            }
+                       
+    
 
-            }
+            
+         
+
+
+
+
+            
 
             
         
