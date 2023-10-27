@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Guess {
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String answer = "Yes";
@@ -26,10 +26,11 @@ public class Guess {
                         answer = scanner.next();
                         if (answer.equalsIgnoreCase("Yes")) {
                             System.out.println("Cool");
-                            number = random.nextInt(100) + 1; 
+                            number = random.nextInt(100) + 1;
+                            System.out.println("Welcome! Guess a number between 1 and 100");
                         } else {
                             System.out.println("Thank you for playing");
-                            break; 
+                            break;
                         }
                     } else if (guessedNumber < number) {
                         System.out.println("Your guess is lower.");
@@ -39,28 +40,8 @@ public class Guess {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("You can only enter numbers. Try again.");
-                scanner.next(); 
+                scanner.next();
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
